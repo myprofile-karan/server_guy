@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { RootState } from '../redux/store';
 import { setQuery, setResults, setPage } from '../redux/slices/searchSlice';
 import Header from '../components/Header';
