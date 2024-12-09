@@ -8,7 +8,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 function App() {
 
   return (
-    <Box sx={{ width: "100%", height: "100%", background: "linear-gradient(to right, #fff5f2, #ffe4dc)" }}>
+    <Box sx={{ width: "100%", height: "100%", overflow:"hidden",background: "linear-gradient(to right, #fff5f2, #ffe4dc)" }}>
       <Router>
         <Routes>
           <Route path="/" element={<Navigate to="/login" />} />

@@ -83,10 +83,10 @@ const Dashboard: React.FC = () => {
     try {
       setLoading(true);
       const startTime = performance.now();
-      
+
       const baseUrl = `https://hn.algolia.com/api/v1/${sortBy}`;
       const url = new URL(baseUrl);
-      
+
       const params: Record<string, string> = {
         query: searchQuery,
         page: pageNumber.toString(),
@@ -155,7 +155,7 @@ const Dashboard: React.FC = () => {
     <div>
       <Header query={query} />
 
-      <Box sx={{display:"flex",justifyContent:"space-between", alignItems:"center", px:2 }}>
+      <Box sx={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", alignItems: "center", px: 2 }}>
         <Box sx={{ display: 'flex', alignItems: "center", my: 2, ml: 2, gap: 2 }}>
           <span>Search</span>
           <Select
@@ -163,9 +163,15 @@ const Dashboard: React.FC = () => {
             onChange={handleTypeChange}
             displayEmpty
             sx={{
-              minWidth: 130,
+              minWidth: {
+                xs: 100,
+                sm: 130
+              },
               background: "white",
-              height: 35,
+              height: {
+                xs: 25,
+                md: 35
+              },
               '.MuiOutlinedInput-input': {
                 padding: '8px 14px'
               }
@@ -184,9 +190,15 @@ const Dashboard: React.FC = () => {
             onChange={handleSortChange}
             displayEmpty
             sx={{
-              minWidth: 130,
+              minWidth: {
+                xs: 100,
+                sm: 130
+              },
               background: "white",
-              height: 35,
+              height: {
+                xs: 25,
+                md: 35
+              },
               '.MuiOutlinedInput-input': {
                 padding: '8px 14px'
               }
@@ -205,9 +217,15 @@ const Dashboard: React.FC = () => {
             onChange={handleTimeRangeChange}
             displayEmpty
             sx={{
-              minWidth: 130,
+              minWidth: {
+                xs: 100,
+                sm: 130
+              },
               background: "white",
-              height: 35,
+              height: {
+                xs: 25,
+                md: 35
+              },
               '.MuiOutlinedInput-input': {
                 padding: '8px 14px'
               }
@@ -221,7 +239,7 @@ const Dashboard: React.FC = () => {
           </Select>
         </Box>
 
-        <Typography sx={{ fontSize: "20px", fontFamily:"cursive",fontWeight: "600", cursor: "pointer", '&:hover': { textDecoration: 'underline' } }}>
+        <Typography sx={{ fontSize: "20px", fontFamily: "cursive", fontWeight: "600", cursor: "pointer", '&:hover': { textDecoration: 'underline' } }}>
           {results && nbHits} results ({requestTime.toFixed(3)} seconds)
         </Typography>
       </Box>
@@ -236,19 +254,19 @@ const Dashboard: React.FC = () => {
             {results && results.length > 0 ? (
               results.map((result) => (
                 <Box key={result.objectID} sx={{ mb: 1 }}>
-                  <Box sx={{ display: "flex", alignItems: "center", gap: "5px" }}>
-                    <Typography sx={{ 
-                      width: "100%", 
-                      fontSize: "22px", 
-                      fontWeight: "500", 
+                  <Box sx={{ display: "flex", alignItems: "center", gap: "5px", flexWrap: "wrap" }}>
+                    <Typography sx={{
+                      width: "100%",
+                      fontSize: "22px",
+                      fontWeight: "500",
                       cursor: "pointer",
                     }}>
                       <HighlightedText text={result.title} query={query} />
                       {result.url && (
-                        <a 
-                          href={result.url} 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
+                        <a
+                          href={result.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           style={{ marginLeft: "10px", fontSize: "18px", color: "#828282", textDecoration: "none", cursor: "pointer" }}
                           onMouseOver={(e) => e.currentTarget.style.textDecoration = 'underline'}
                           onMouseOut={(e) => e.currentTarget.style.textDecoration = 'none'}
@@ -295,7 +313,7 @@ const Dashboard: React.FC = () => {
                 sx={{
                   '& .MuiPaginationItem-root': {
                     backgroundColor: '#fff',
-                    color:"black",
+                    color: "black",
                     borderRadius: "5px",
                   },
                   '& .Mui-selected': {
